@@ -7,7 +7,10 @@ config.URLS = [
   { url: "http://www.000webhost.com", isUp: true, lastReachable: null },
   { url: "http://www.sss.gov.ph", isUp: true, lastReachable: null },
   { url: "http://www.mango.com", isUp: true, lastReachable: null },
-  { url: "http://www.leo.org", isUp: true, lastReachable: null }
+  { url: "http://www.leo.org", isUp: true, lastReachable: null },
+  { url: "https://www.github.com", isUp: true, lastReachable: null },
+  { url: "https://www.gitlab.com", isUp: true, lastReachable: null }
+
 ];
 
 config.REQUEST_TIMEOUT = process.env.REQUEST_TIMEOUT || 5000;
