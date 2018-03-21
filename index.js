@@ -16,6 +16,15 @@ const URLS = [
 
 const REQUEST_TIMEOUT = process.env.REQUEST_TIMEOUT || 5000;
 const UPTIME_INTERVAL = process.env.UPTIME_INTERVAL || 200000;
+const CRITICAL_LEVEL = process.env.CRITICAL_LEVEL || 90;
+
+const checkIfCritical = (reachable, total) => {
+  const displaySymbol = reachable === total ? symbols.success : symbols.warning;
+  console.log(`\n ${displaySymbol} ${reachable}/${total} are UP`);
+  if (Math.floor(reachable / total * 100) < CRITICAL_LEVEL){
+    // console.log('welp, prob should do something')
+  }
+}
 
 const checkForDowntime = async () => {
   console.log("\n" + chalk.green("Checking status: ") + new Date() + "\n");
@@ -38,7 +47,7 @@ const checkForDowntime = async () => {
   }
 
   const reachable = URLS.filter(entry => entry.isUp).length;
-  console.log(`\n ${symbols.info} ${reachable}/${URLS.length} are UP`);
+  checkIfCritical(reachable, URLS.length)
   setTimeout(() => checkForDowntime(), UPTIME_INTERVAL);
 };
 
