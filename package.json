@@ -17,6 +17,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "chalk": "^2.3.2",
-    "express": "*"
+    "express": "*",
+    "log-symbols": "^2.2.0"
   }
 }
