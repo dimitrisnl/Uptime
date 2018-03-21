@@ -2,9 +2,14 @@
 
 Get updates about the availability of your deployed apps & websites
 
-## Parts
-- Raspberry Pi 3
-- Sense Hat
+## Used
+  ### H/W
+  - Raspberry Pi 3
+  - Sense Hat
+
+  ### Software
+  - [Resin.io](https://resin.io/)
+  - [Etcher](https://etcher.io/)
 
 ## Guides
 - https://docs.resin.io/learn/getting-started/raspberrypi3/nodejs/
