@@ -7,9 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "repository" :{
-    "type" : "git",
-    "url" : "https://github.com/DimitrisNL/Uptime.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DimitrisNL/Uptime.git"
   },
   "keywords": [
     "resin.io",
