@@ -2,40 +2,32 @@
 const axios = require("axios");
 const chalk = require("chalk");
 const symbols = require("log-symbols");
+const config = require('./config');
 
-// Make them ENV variables
-const URLS = [
-  { url: "https://dimitrioslytras.com", isUp: true, lastReachable: null },
-  { url: "https://google.com", isUp: true, lastReachable: null },
-  { url: "https://cssmaid.netlify.com/", isUp: true, lastReachable: null },
-  { url: "http://www.000webhost.com", isUp: true, lastReachable: null },
-  { url: "http://www.sss.gov.ph", isUp: true, lastReachable: null },
-  { url: "http://www.mango.com", isUp: true, lastReachable: null },
-  { url: "http://www.leo.org", isUp: true, lastReachable: null }
-];
-
-const REQUEST_TIMEOUT = process.env.REQUEST_TIMEOUT || 5000;
-const UPTIME_INTERVAL = process.env.UPTIME_INTERVAL || 200000;
-const CRITICAL_LEVEL = process.env.CRITICAL_LEVEL || 90;
+const urls = [...config.URLS];
 
 const checkIfCritical = (reachable, total) => {
   const displaySymbol = reachable === total ? symbols.success : symbols.warning;
+
   console.log(`\n ${displaySymbol} ${reachable}/${total} are UP`);
-  if (Math.floor(reachable / total * 100) < CRITICAL_LEVEL){
+
+  if (Math.floor(reachable / total * 100) < config.CRITICAL_LEVEL) {
     // console.log('welp, prob should do something')
   }
-}
+};
 
 const checkForDowntime = async () => {
   console.log("\n" + chalk.green("Checking status: ") + new Date() + "\n");
 
-  for (let entry of URLS) {
+  for (let entry of urls) {
+
     try {
       // Check if reachable
-      const response = await axios.get(entry.url, { timeout: REQUEST_TIMEOUT });
+      const response = await axios.get(entry.url, { timeout: config.REQUEST_TIMEOUT });
       console.log(` ${symbols.success} ${response.config.url}`);
       entry = { ...entry, isUp: true, lastReachable: new Date() };
-    } catch (e) {
+    }
+    catch (e) {
       // Nope, no response
       entry.isUp = false;
       console.log(
@@ -46,9 +38,10 @@ const checkForDowntime = async () => {
     }
   }
 
-  const reachable = URLS.filter(entry => entry.isUp).length;
-  checkIfCritical(reachable, URLS.length)
-  setTimeout(() => checkForDowntime(), UPTIME_INTERVAL);
+  const reachable = urls.filter(entry => entry.isUp).length;
+
+  checkIfCritical(reachable, urls.length);
+  setTimeout(() => checkForDowntime(), config.UPTIME_INTERVAL);
 };
 
 checkForDowntime();
