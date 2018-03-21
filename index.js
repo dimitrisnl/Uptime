@@ -1,13 +1,12 @@
-// get something that is down from here http://www.isitdownrightnow.com/
-const axios = require("axios");
-const chalk = require("chalk");
-const symbols = require("log-symbols");
-const matrix = require("node-sense-hat").Leds;
-const config = require("./config");
+const axios = require('axios');
+const chalk = require('chalk');
+const symbols = require('log-symbols');
+const matrix = require('node-sense-hat').Leds;
+const config = require('./config');
 
 const red = [255, 0, 0];
 const green = [0, 100, 0];
-const white = [0, 0, 0]
+const white = [0, 0, 0];
 
 const urls = [...config.URLS];
 let timeout;
@@ -26,19 +25,19 @@ const paintMatrix = urls => {
   urls.forEach((entry, index) => {
     array[index] = entry.isUp ? green : red;
   });
-  matrix.setPixels(array)
+  matrix.setPixels(array);
 };
 // End Helpers ----------------------------------------
 
 // Main -----------------------------------------------
 const checkForDowntime = async () => {
-  console.log("\n" + chalk.green("Checking status: ") + new Date() + "\n");
+  console.log('\n' + chalk.green('Checking status: ') + new Date() + '\n');
 
   for (let entry of urls) {
     try {
       // Check if reachable
       const response = await axios.get(entry.url, {
-        timeout: config.REQUEST_TIMEOUT
+        timeout: config.REQUEST_TIMEOUT,
       });
       console.log(` ${symbols.success} ${response.config.url}`);
       entry = { ...entry, isUp: true, lastReachable: new Date() };
@@ -46,7 +45,9 @@ const checkForDowntime = async () => {
       // Nope, no response
       entry.isUp = false;
       console.log(
-        ` ${symbols.error} ${e.config.url} - Last time up: ${chalk.underline(entry.lastReachable || "N/A")}`
+        ` ${symbols.error} ${e.config.url} - Last time up: ${chalk.underline(
+          entry.lastReachable || 'N/A'
+        )}`
       );
     }
   }
