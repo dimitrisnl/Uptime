@@ -1,29 +1,22 @@
 {
-  "name": "simple-server-node",
+  "name": "uptime",
   "version": "1.0.0",
-  "description": "A simple Expressjs Web server on resin.io",
-  "main": "server.js",
+  "description": "Simple uptime checker",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/resin-io-projects/simple-server-node.git"
-  },
   "keywords": [
     "resin.io",
-    "webserver",
-    "nodejs",
-    "expressjs"
+    "uptime",
+    "nodejs"
   ],
-  "author": "Shaun Mulligan <shaun@resin.io>",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/resin-io-projects/simple-server-node/issues"
-  },
-  "homepage": "https://github.com/resin-io-projects/simple-server-node#readme",
+  "author": "Dimitris Lytras <dnlytras@gmail.com>",
+  "license": "MIT",
   "dependencies": {
+    "axios": "^0.18.0",
+    "chalk": "^2.3.2",
     "express": "*"
   }
 }

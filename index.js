@@ -14,7 +14,7 @@
 
 // });
 
-// get something that is down from here http://www.isitdownrightnow.com/
+// // get something that is down from here http://www.isitdownrightnow.com/
 
 const axios = require('axios');
 const chalk = require('chalk');
