@@ -16,9 +16,8 @@ const URLS = [
   { url: "http://www.leo.org", isUp: true, lastReachable: null }
 ];
 
-const REQUEST_TIMEOUT = 5000;
-// const UPTIME_INTERVAL = 300000; // 5 minutes
-const UPTIME_INTERVAL = 200000; // 5 minutes
+const REQUEST_TIMEOUT = process.env.REQUEST_TIMEOUT || 5000;
+const UPTIME_INTERVAL = process.env.UPTIME_INTERVAL || 200000;
 
 const checkForDowntime = async () => {
   console.log("\n" + chalk.green("Checking status: ") + new Date() + "\n");
