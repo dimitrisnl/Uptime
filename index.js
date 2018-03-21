@@ -1,23 +1,9 @@
-// const express = require('express');
-// const app = express();
-
-// // reply to request with "Hello World!"
-// app.get('/', (req, res) => {
-//   res.send('Hello World!');
-// });
-
-// //start a server on port 80 and log its start to our console
-// const server = app.listen(80, () => {
-
-//   const port = server.address().port;
-//   console.log('Example app listening on port ', port);
-
-// });
-
-// // get something that is down from here http://www.isitdownrightnow.com/
+// get something that is down from here http://www.isitdownrightnow.com/
 
 const axios = require('axios');
 const chalk = require('chalk');
+
+// Make them ENV variables
 
 const URLS = [
   'http://dimitrioslytras.com',
@@ -28,7 +14,9 @@ const URLS = [
 ];
 
 const REQUEST_TIMEOUT = 5000;
-const UPTIME_INTERVAL = 300000; // 5 minutes
+// const UPTIME_INTERVAL = 300000; // 5 minutes
+const UPTIME_INTERVAL = 100000; // 5 minutes
+
 
 const promises = URLS.map(url => axios.get(url, { timeout: REQUEST_TIMEOUT }));
 
