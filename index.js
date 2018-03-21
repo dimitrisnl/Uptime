@@ -3,8 +3,6 @@ const axios = require("axios");
 const chalk = require("chalk");
 const symbols = require("log-symbols");
 
-console.log(process.env)
-
 // Make them ENV variables
 const URLS = [
   { url: "https://dimitrioslytras.com", isUp: true, lastReachable: null },
