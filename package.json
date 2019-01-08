@@ -23,6 +23,6 @@
     "chalk": "^2.3.2",
     "log-symbols": "^2.2.0",
     "node-sense-hat": "^0.0.2",
-    "sleep": "^5.1.1"
+    "sleep": "^5.2.3"
   }
 }
