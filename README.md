@@ -1,5 +1,7 @@
 # Uptime
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/dimitrisnl/Uptime.svg)](https://greenkeeper.io/)
+
 Get updates about the availability of your deployed apps & websites
 
 ## Used
